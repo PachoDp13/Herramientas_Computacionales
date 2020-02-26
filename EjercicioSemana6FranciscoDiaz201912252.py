@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!bin/bash/python3
 # coding: utf-8
 #Francisco Javier Díaz Perdomo  COD:201912252
 print ("Primera parte, función factorial:")
