@@ -1,28 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-# In[1]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-           
-
-
-# In[9]:
-
-
+#Francisco Javier Díaz Perdomo  COD:201912252
 print ("Primera parte, función factorial:")
 
 def factorial(n):
@@ -31,7 +9,6 @@ def factorial(n):
     else:
         return (n*factorial(n-1))
     
-
 for i in range (1,6):
     print ("El factorial de",i,"es:", factorial(i) ) 
 
@@ -80,24 +57,4 @@ while (m>=1):
     else:
         m=m-1
     n=n*2
-print ("El resultado de",a,"x",b,"es:",prod(a,b))
-       
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
+print ("El resultado de",a,"x",b,"es:",prod(a,b))     
