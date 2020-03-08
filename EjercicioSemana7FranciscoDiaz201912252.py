@@ -1,4 +1,4 @@
-#Francisco Javier Díaz  Perd
+#Francisco Javier Díaz  Perdomo
 print ("Primera Parte")
 class libre:
     "Este balón se mueve mediante el método de Euler"
@@ -67,7 +67,7 @@ class parabfric(tiropar):
         self.vx +=(self.Fx/self.m)*dt
         self.Fx = (self.vx*self.bet)*(-1)
     def imprime(self,t):
-        return "{0:.5f}   {1:.5f}   {2:.5f}   {3:.5f}   {4:.5f}".format(t,self.y,self.vy,self.x, self.vx)
+        return "{0:.6f}   {1:.6f}   {2:.6f}   {3:.6f}   {4:.6f}   {5:.6f}".format(t,self.y,self.vy,self.x, self.vx, self.bet)
 
 vxp= 7 *(((2)**(1/2))/2)
 vyp = vxp
@@ -152,20 +152,30 @@ f.write(st)
 f.close()
 #%%
 
+
 #%%
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-whitegrid')
 #%%
-print("Bono: )
+print("Bono:")
 """
 En esta parte leemos y graficamos los datos generados.
 """
 ## Leamos archivos
-f=open("caidalibre.dat","r")
+f=open("parabolico.dat","r")
 l1=f.readlines()
 f.close()
-f=open("parabolico.dat","r")
+f=open("parabfric.dat","r")
 l2=f.readlines()
+f.close()
+f=open("libre.dat","r")
+l3=f.readlines()
+f.close()
+f=open("paracaidas.dat","r")
+l4=f.readlines()
+f.close()
+f=open("cohete.dat","r")
+l5=f.readlines()
 f.close()
 t1=[]
 x1=[]
@@ -180,33 +190,55 @@ for i in range(len(l1)):
     x1.append(float(x[3]))
     vx1.append(float(x[4]))
 t2=[]
-y2=[]
-vy2=[]
 x2=[]
 vx2=[]
+y2=[]
+vy2=[]
 for i in range(len(l2)):
     x=l2[i].split()
     t2.append(float(x[0]))
     y2.append(float(x[1]))
-    v2.append(float(x[2]))
+    vy2.append(float(x[2]))
     x2.append(float(x[3]))
     vx2.append(float(x[4]))
+t3=[]
+y3=[]
+for i in range(len(l3)):
+    x=l3[i].split()
+    t3.append(float(x[0]))
+    y3.append(float(x[1]))
+t4=[]
+y4=[]
+for i in range(len(l4)):
+    x=l4[i].split()
+    t4.append(float(x[0]))
+    y4.append(float(x[1]))
+t5=[]
+y5=[]
+for i in range(len(l5)):
+    x=l5[i].split()
+    t5.append(float(x[0]))
+    y5.append(float(x[1]))
+    
+# Grafiquemos la trayectoria del tiro parabólico con y sin fricción
+fig=plt.figure()
+ax=fig.add_subplot(1,1,1)
+ax.plot(x1,y1)
+ax.plot(x2,y2)
+ax.set(xlabel='x (m)', ylabel='y (m)',title='Gráfica Trayectoria con y sin fricción')
+fig.savefig("XvsY.png")
+plt.close(fig)
 # Grafiquemos altura contra tiempo
 fig=plt.figure()
 ax=fig.add_subplot(1,1,1)
-ax.plot(t1,y1)
-ax.plot(t2,y2)
-ax.set(xlabel='t (s)', ylabel='y (m)',title='Altura contra tiempo')
-fig.savefig("HvsT.png")
+ax.plot(t3,y3)
+ax.plot(t4,y4)
+ax.plot(t5,y5)
+ax.set(xlabel='t (s)', ylabel='y (m)',title='Altura en Y contra tiempo')
+fig.savefig("YvsT.png")
 plt.close(fig)
-# Grafiquemos velocidad contra tiempo
-fig=plt.figure()
-ax=fig.add_subplot(1,1,1)
-ax.plot(t1,vy1)
-ax.plot(t2,vy2)
-ax.set(xlabel='t (s)', ylabel='vy (m/s)',title='Velocidad en Y contra tiempo')
-fig.savefig("VvsT.png")
-plt.close(fig)
+
+
 
 
 
